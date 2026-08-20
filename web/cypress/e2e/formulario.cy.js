@@ -1,0 +1,20 @@
+describe('Formilario', () => {
+
+    it('teste',() => {
+        cy.login('4DM@gmail.com', '4DM')
+        cy.contains('button', 'Formulário').should('be.visible').click()
+        cy.contains('h1', 'Consultoria').should('be.visible')
+        cy.get('#name').type('Percy Jackson')
+        cy.get('#email').type('percy@gmail.com')
+        cy.get('#phone').type('11 99999-9999')
+        cy.get('#consultancyType').select('In Company')
+        cy.contains('label', 'Pessoa Jurídica').click()
+        cy.contains('label', 'Pessoa Física').should('not.be.checked')
+        cy.get('#document').type('99.444.555/3434-00')
+        cy.contains('label', 'Instagram').find('input[type=checkbox]').click().should('be.checked')
+        cy.get('#details').type('Filho de poseidon')
+        cy.get('#technologies').type('Bicicleta Rodinha')
+        cy.contains('label', 'Li e aceito os termos de uso').find('input[type=checkbox]').click().should('be.checked')
+        cy.contains('button', 'Enviar formulário').click()
+    })
+})
